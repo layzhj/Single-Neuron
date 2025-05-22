@@ -46,9 +46,9 @@ cv.atolscale("DcDt.ng", 1e-22)
 cv.atolscale("DcDt.U", 1)
 cv.atolscale("DcDt.Z", 1e-6)
 
-# cv.solve(400)
-h.tstop = 400
-h.run()
+cv.solve(400)
+# h.tstop = 400
+# h.run()
 
 save_path = './sonic'
 os.makedirs(save_path, exist_ok=True)
