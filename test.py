@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import pandas as pd
 from cell.PyramidalCell import PyramidalCell
-from main_run.litus.bls import BilayerSonophore
+from litus.bls import BilayerSonophore
 
 h.load_file('stdrun.hoc')
 load_mechanisms('./mechanisms/')
@@ -32,6 +32,7 @@ stim.tdur = 300
 stim.PRF = 1
 stim.DC = 0.05
 
+# FOR FIRNG
 iclamp = h.IClamp(cell.soma(0.5))
 iclamp.delay = 100
 iclamp.dur = 200
@@ -39,6 +40,7 @@ iclamp.amp = 0.3
 
 t_vec = h.Vector().record(h._ref_t, 0.1)
 v_vec = h.Vector().record(cell.soma(0.5)._ref_v, 0.1)
+c_vec = h.Vector().record(cell.soma(0.5)._ref_c, 0.1)
 
 h.cvode_active(1)
 cv = h.CVode()
@@ -58,6 +60,15 @@ df.to_csv(save_path+'/pyramidal.csv')
 
 print(t_vec.as_numpy())
 print(v_vec.as_numpy())
+
+fig, ax = plt.subplots(2, 1)
+
+ax[0].plot(t_vec, v_vec, color='orange')
+ax[0].set_ylabel('Voltage (mV)')
+
+ax[1].plot(t_vec, c_vec, color='orange')
+ax[1].set_ylabel('Capacitance ($uF/cm^{2}$)')
+ax[1].set_xlabel('Time (ms)')
 
 plt.plot(t_vec, v_vec)
 plt.show()
