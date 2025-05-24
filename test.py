@@ -42,6 +42,10 @@ t_vec = h.Vector().record(h._ref_t)
 v_vec = h.Vector().record(cell.soma(0.5)._ref_v)
 c_vec = h.Vector().record(cell.soma(0.5)._ref_cm)
 
+# t_vec = h.Vector().record(h._ref_t, 0.1)
+# v_vec = h.Vector().record(cell.soma(0.5)._ref_v, 0.1)
+# c_vec = h.Vector().record(cell.soma(0.5)._ref_cm, 0.1)
+
 h.cvode_active(1)
 cv = h.CVode()
 cv.atolscale("DcDt.ng", 1e-22)
