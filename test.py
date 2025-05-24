@@ -38,9 +38,9 @@ iclamp.delay = 100
 iclamp.dur = 200
 iclamp.amp = 0.3
 
-t_vec = h.Vector().record(h._ref_t, 0.1)
-v_vec = h.Vector().record(cell.soma(0.5)._ref_v, 0.1)
-c_vec = h.Vector().record(cell.soma(0.5)._ref_c, 0.1)
+t_vec = h.Vector().record(h._ref_t)
+v_vec = h.Vector().record(cell.soma(0.5)._ref_v)
+c_vec = h.Vector().record(cell.soma(0.5)._ref_cm)
 
 h.cvode_active(1)
 cv = h.CVode()
